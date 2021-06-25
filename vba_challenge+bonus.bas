@@ -16,9 +16,7 @@ Sub vba_challenge()
 
     Dim ws As Worksheet
 
-    For Each ws In Worksheets ' Code run on each worksheet - not working; copies
-                                ' current worksheet info to the others but not
-                                ' corresponding worksheet to its own.
+    For Each ws In Worksheets ' Code run on each worksheet 
 
         ' Dims
         Dim ticker As String
@@ -115,21 +113,21 @@ Sub vba_challenge()
                 
             End If
         
-        ' Bounus Section ----------------------------------------------------------
+        ' Bonus Section ----------------------------------------------------------
         Dim max_percent As Double
-            max_percent = WorksheetFunction.Max(Range("K" & 2 & ":" & "K" & j))
-            ws.Range("Q2").Value = max_percent
-            ws.Range("P2").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(max_percent, Range("K" & 2 & ":" & "K" & j), 0))
+            max_percent = WorksheetFunction.Max(Range("K" & 2 & ":" & "K" & j)) ' Find the largest % increase within array
+            ws.Range("Q2").Value = max_percent ' Print value
+            ws.Range("P2").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(max_percent, Range("K" & 2 & ":" & "K" & j), 0)) ' Find the matching ticker
             
         Dim min_percent As Double
-            min_percent = WorksheetFunction.Min(Range("K" & 2 & ":" & "K" & j))
-            ws.Range("Q3").Value = min_percent
-            ws.Range("P3").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(min_percent, Range("K" & 2 & ":" & "K" & j), 0))
+            min_percent = WorksheetFunction.Min(Range("K" & 2 & ":" & "K" & j)) ' Find the largest % decrease within array
+            ws.Range("Q3").Value = min_percent ' Print value
+            ws.Range("P3").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(min_percent, Range("K" & 2 & ":" & "K" & j), 0)) ' Find the matching ticker
             
         Dim max_total As Double
-            max_total = WorksheetFunction.Max(Range("L" & 2 & ":" & "L" & j))
-            ws.Range("Q4").Value = max_total
-            ws.Range("P4").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(max_total, Range("L" & 2 & ":" & "L" & j), 0))
+            max_total = WorksheetFunction.Max(Range("L" & 2 & ":" & "L" & j)) ' Find the largest volume 
+            ws.Range("Q4").Value = max_total ' Print value
+            ws.Range("P4").Value = Application.Index(Range("I" & 2 & ":" & "I" & j), Application.Match(max_total, Range("L" & 2 & ":" & "L" & j), 0)) ' Find the matching ticker
         ' --------------------------------------------------------------------------
         
         Next j
